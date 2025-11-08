@@ -8,57 +8,40 @@ prodlist = {
 def convert(num):
     return f"ціна: {num:.2f} грн"
 
-def list(*produkt):
-    produkts = {}
-    for item in produkt:
-        produkts[item] = item in prodlist
-    return produkts
-
-def shop(check, option):
-    if not check:
-        return "В списку немає продуктів"
-    for item in check:
-        if item not in prodlist:
-            return "Певних товарів немає в магазині"
-    total = 0
-    for item in check:
-        total += prodlist[item]
-    if option == "price":
-        return "Загальна " + convert(total)
-    elif option == "buy":
-        return "Ваші покупки " + ", ".join(check) + " " + convert(total)
-    else:
-        return "Ви вказали не правильні дані"
-
+def prodcheck(*products):
+    res = {}
+    for prod in products:
+        if prod in prodlist: res[prod] = True
+        else: res[prod] = False
+    return res
 
 
 def main():
-    num = float(input())
+    num = float(input("Enter a number: "))
     print(convert(num))
-    print(list("chlib", "jablko", "Jay", "banan", "yogurt"))
-    a=0
+    result = prodcheck("chlib", "computer", "jay", "grusha")
+    print(result)
+
     while True:
-        if(a==0):
-            check = input().split()
-            option = input()
-            print(shop(check, option))
-            print("------------------")
-            print("Якщо хочете вийти введіть - stop. Інакше вводьте нові продукти")
-            check = input().split()
-            if check == "stop":
-                break
-            option = input()
-            print(shop(check, option))
-            a+=1
+        user_prod = input("Enter a product (separated by space): ").lower().split()
+        prod_to_buy = prodcheck(*user_prod)
+        if all(prod_to_buy.values()):
+            while True:
+                a = input("buy or watch a price? (or exit to quit): ").lower()
+                if a == "buy":
+                    pass
+                    break
+                elif a == "watch":
+                    total = 0
+                    for product in user_prod:
+                        total += prodlist[product]
+                    print("total price: ", total)
+                    continue
+                elif a == "exit":
+                    return
+                else: print("anything else")
         else:
-            print("Якщо хочете вийти введіть - stop. Інакше вводьте нові продукти")
-            check = input().split()
-            if check == "stop":
-                break
-            option = input()
-            print(shop(check, option))
-
-
+            print("No, the product was incorrect")
 
 if __name__ == '__main__':
     main()
