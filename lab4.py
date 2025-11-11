@@ -8,6 +8,7 @@ prodlist = {
 def convert(num):
     return f"ціна: {num:.2f} грн"
 
+
 def prodcheck(*products):
     res = {}
     for prod in products:
@@ -16,14 +17,10 @@ def prodcheck(*products):
     return res
 
 
-def main():
-    num = float(input("Enter a number: "))
-    print(convert(num))
-    result = prodcheck("chlib", "computer", "jay", "grusha")
-    print(result)
-
+def magazyn():
     while True:
-        user_prod = input("Enter a product (separated by space): ").lower().split()
+        print("-" * 50)
+        user_prod = input("Enter a product you want to buy (separated by space): ").lower().split()
         prod_to_buy = prodcheck(*user_prod)
         if all(prod_to_buy.values()):
             while True:
@@ -39,9 +36,20 @@ def main():
                     continue
                 elif a == "exit":
                     return
-                else: print("anything else")
+                else:
+                    print("anything else")
+                    print("-" * 25)
         else:
             print("No, the product was incorrect")
+            print("-"*50)
+
+def main():
+    num = float(input("Enter a number: "))
+    print(convert(num))
+    result = prodcheck("chlib", "computer", "jay", "grusha")
+    print(result)
+    magazyn()
+
 
 if __name__ == '__main__':
     main()
