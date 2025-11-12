@@ -24,20 +24,19 @@ def magazyn():
         prod_to_buy = prodcheck(*user_prod)
         if all(prod_to_buy.values()):
             while True:
-                a = input("buy or watch a price? (or exit to quit): ").lower()
+                a = input("buy or price? (or exit): ").lower()
                 if a == "buy":
-                    pass
+                    print("Congrats!")
                     break
-                elif a == "watch":
+                elif a == "price":
                     total = 0
                     for product in user_prod:
                         total += prodlist[product]
                     print("total price: ", convert(total))
-                    continue
                 elif a == "exit":
-                    return
+                    return -1
                 else:
-                    print("anything else")
+                    print("try again")
                     print("-" * 25)
         else:
             print("No, the product was incorrect")
@@ -46,11 +45,16 @@ def magazyn():
 def main():
     num = float(input("Enter a number: "))
     print(convert(num))
-    result = prodcheck("chlib", "computer", "jay", "grusha")
+    result = prodcheck("chlib", "computer", "jay", "grusha", "jablko", "banan")
     print(result)
     magazyn()
 
 
 if __name__ == '__main__':
     main()
+
+
+if __name__ == '__main__':
+    main()
+
 
