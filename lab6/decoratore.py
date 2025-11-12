@@ -7,7 +7,7 @@ def checkcpu(func):
             cpu = args[2]
 
         if cpu:
-            if a and b:
+            if a is not None and b is not None:
                 if a+b >= 100: cpu += 50
                 elif a+b >= 50: cpu += 30
                 elif a+b >= 25: cpu += 10
@@ -17,4 +17,5 @@ def checkcpu(func):
             print("cpu:", cpu)
 
         return func(*args, **kwargs)
+
     return wrapper
