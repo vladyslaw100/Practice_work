@@ -32,7 +32,7 @@ def magazyn():
                     total = 0
                     for product in user_prod:
                         total += prodlist[product]
-                    print("total price: ", total)
+                    print("total price: ", convert(total))
                     continue
                 elif a == "exit":
                     return
@@ -53,3 +53,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
