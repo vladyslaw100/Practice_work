@@ -2,7 +2,8 @@ prodlist = {
     "chlib":60,
     "jablko":20,
     "banan":30,
-    "grusha":10
+    "grusha":10,
+    "orange":25
 }
 
 def convert(num):
@@ -52,3 +53,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
