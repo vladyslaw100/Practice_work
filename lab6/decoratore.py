@@ -13,7 +13,6 @@ def checkcpu(func):
         if cpu >= 50:
             print(f'Не можу виконати це завдання — CPU перевищено: {cpu}%)')
             return None
-            print("cpu:", cpu)
 
         return func(*args, **kwargs)
 
